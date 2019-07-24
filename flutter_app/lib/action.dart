@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'trend.dart';
 
 class ActionPage extends StatelessWidget{
   @override
@@ -56,7 +57,9 @@ class ActionBody extends StatelessWidget{
     return new Container(
       child: new Column(
         children: <Widget>[
-          _actionItem('好友圈', Icons.camera, 0, 0, ()=>{}),
+          _actionItem('好友圈', Icons.camera, 0, 0, ()=>{
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyTrend()))
+          }),
           _actionItem('扫一扫', Icons.crop_free, 10.0, 0, ()=>{}),
           _setLine(),
           _actionItem('热点资讯', Icons.whatshot, 0, 0, ()=>{}),

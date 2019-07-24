@@ -122,7 +122,7 @@ class MsgItem extends StatelessWidget{
                   width: 80.0,
                   height: 80.0,
                   child: new Container(
-                      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                      padding: const EdgeInsets.all(10.0),
                       width:60.0,
                       child: new CircleAvatar(
                         backgroundImage: new NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
