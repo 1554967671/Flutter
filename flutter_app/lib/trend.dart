@@ -99,12 +99,13 @@ class _MyTrendState extends State<MyTrend>{
                               ),
                             ),
 
-                            // 昵称
+                            // 内容
                             Expanded(
                               child: Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
+                                    // 名称
                                     Container(
                                       padding: EdgeInsets.fromLTRB(0, 8.0, 0, 0),
                                       height: 30.0,
@@ -117,9 +118,12 @@ class _MyTrendState extends State<MyTrend>{
                                         ),
                                       ),
                                     ),
+
+                                    // 文字描述
                                     Container(
+                                      margin: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
                                       child: Text(
-                                        '测试中。。。',
+                                        '测试中123456789123456789456135498765456464354FFF。。。',
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           decoration: TextDecoration.none,
@@ -127,10 +131,88 @@ class _MyTrendState extends State<MyTrend>{
                                         ),
                                       ),
                                     ),
+
+                                    // 图片
                                     Container(
                                       padding: EdgeInsets.fromLTRB(0, 8.0, 20.0, 0),
                                       child: Image.network('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',fit: BoxFit.contain,),
                                     ),
+
+                                    // 日期和操作按钮
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 2.0, 10.0, 0),
+                                      height: 28.0,
+                                      child: Row(
+                                        children: <Widget>[
+                                          //显示时间
+                                          Expanded(
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text('1小时前',
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
+                                                  decoration: TextDecoration.none,
+                                                  color: Colors.black38,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          //操作按钮
+                                          Container(
+                                            child: Material(
+                                              child: Container(
+                                                width: 28.0,
+                                                height: 16.0,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.black12,
+                                                  borderRadius: BorderRadius.circular(4.0),
+                                                ),
+                                                child: PopupMenuButton<String>(
+                                                    onSelected: (String value){
+
+                                                    },
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                      children: <Widget>[
+                                                        CircleAvatar(
+                                                          backgroundColor: Color(0xFF651FFF),
+                                                          radius: 2.0,
+                                                        ),
+                                                        CircleAvatar(
+                                                          backgroundColor: Color(0xFF651FFF),
+                                                          radius: 2.0,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    padding: EdgeInsets.zero,
+                                                    itemBuilder: (BuildContext context) =><PopupMenuItem<String>>[
+                                                      PopupMenuItem(
+                                                          value:"赞",
+                                                          child: ListTile(
+                                                            leading: Icon(Icons.favorite_border),
+                                                            title: Text('赞'),
+                                                          )
+                                                      ),
+                                                      PopupMenuItem(
+                                                          value: "评论",
+                                                          child: ListTile(
+                                                            leading: Icon(Icons.chat_bubble_outline),
+                                                            title: Text('评论'),
+                                                          )
+                                                      )
+                                                    ]
+                                                ),
+                                              ),
+                                            )
+                                          )
+                                        ],
+                                      ),
+                                    ),
+
+                                    //
+
+
                                   ],
                                 ),
                               ),
@@ -175,6 +257,11 @@ class _MyTrendState extends State<MyTrend>{
         ],
       ),
     );
+  }
+
+  void showInSnackBar(String value){
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text('你选择的是$value')));
   }
 
 }
