@@ -82,7 +82,7 @@ class _MyTrendState extends State<MyTrend>{
                     child: Column(
                       children: <Widget>[
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,//水平
                           children: <Widget>[
                             // 头像
                             GestureDetector(
@@ -103,7 +103,7 @@ class _MyTrendState extends State<MyTrend>{
                             Expanded(
                               child: Container(
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,//水平
                                   children: <Widget>[
                                     // 名称
                                     Container(
@@ -210,8 +210,80 @@ class _MyTrendState extends State<MyTrend>{
                                       ),
                                     ),
 
-                                    //
+                                    // 三角
+                                    Container(
+                                      padding: EdgeInsets.only(left: 8.0),
+                                      height: 14.0,
+                                      child: Image.asset('images/icon-up.png'),
+                                    ),
 
+                                    // 点赞区域
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
+                                      child: Container(
+                                        color: Color(0xFFF5F5F5),
+                                        padding: EdgeInsets.all(2.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Expanded(
+                                              child: Wrap(
+                                                spacing: 4.0,
+                                                crossAxisAlignment: WrapCrossAlignment.center,
+                                                children: <Widget>[
+                                                  Icon(Icons.favorite_border,size: 20.0,color: Colors.indigo,),
+                                                  Text(
+                                                    'Alan',
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration.none,
+                                                      color: Colors.indigo,
+                                                      fontSize: 16.0,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    ',',
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration.none,
+                                                      color: Colors.black,
+                                                      fontSize: 16.0,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Jack',
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration.none,
+                                                      color: Colors.indigo,
+                                                      fontSize: 16.0,
+                                                    ),
+                                                  ),
+
+
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+
+                                    //评论区域
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
+                                      child: Container(
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              height: 0.6,
+                                              color: Colors.white70,
+                                            ),
+                                            Container(
+                                              height: 40.0,
+                                              color: Color(0xFFF5F5F5),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
 
                                   ],
                                 ),
@@ -229,31 +301,9 @@ class _MyTrendState extends State<MyTrend>{
             ),
           ),
 
-//          SliverFixedExtentList(
-//            itemExtent: 50.0,
-//            delegate: new SliverChildBuilderDelegate(
-//                    (BuildContext context, int index) {
-//                  //创建列表项
-//                  return new Container(
-//                    color: Colors.green,
-//                    child: Row(
-//                      mainAxisAlignment: MainAxisAlignment.start,
-//                      children: <Widget>[
-//                        Container(
-//                          width: 60.0,
-//                          height: 60.0,
-//                          color: Colors.yellow,
-//                          child: ClipOval(
-//                            child: Image.network('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',fit: BoxFit.fill,),
-//                          ),
-//                        ),
-//                      ],
-//                    ),
-//                  );
-//                },
-//                childCount: 2 //50个列表项
-//            ),
-//          ),
+
+
+
         ],
       ),
     );
