@@ -43,6 +43,90 @@ class _MyTrendState extends State<MyTrend>{
     },
   ];
 
+  Widget _SetHead(){
+    return Container(
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: (){
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context){
+                          return new Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              new ListTile(
+                                leading: new Icon(Icons.photo_camera),
+                                title: new Text("拍一张"),
+                                onTap: () async {
+
+                                },
+                              ),
+                              new ListTile(
+                                leading: new Icon(Icons.photo_library),
+                                title: new Text("从手机相册中选择"),
+                                onTap: () async {
+
+                                },
+                              ),
+                            ],
+                          );
+                        }
+                    );
+
+                  },
+                  child: Container(
+                      height: 190.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 170.0,
+            right: 75.0,
+            child: Text('Alan',style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            ),),
+          ),
+          Positioned(
+            top: 150.0,
+            right: 10.0,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: 60.0,
+                height: 60.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  image: DecorationImage(
+                    image: NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            )
+          ),
+
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,10 +148,10 @@ class _MyTrendState extends State<MyTrend>{
                   onPressed: (){}
               )
             ],
-            backgroundColor: Colors.white12,
+            backgroundColor: Color(0xFFFCFCFC),
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',fit: BoxFit.cover,),
+              background: _SetHead(),
             ),
             pinned: true,
           ),
@@ -267,23 +351,23 @@ class _MyTrendState extends State<MyTrend>{
 
 
                                     //评论区域
-                                    Container(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
-                                      child: Container(
-                                        child: Column(
-                                          children: <Widget>[
-                                            Container(
-                                              height: 0.6,
-                                              color: Colors.white70,
-                                            ),
-                                            Container(
-                                              height: 40.0,
-                                              color: Color(0xFFF5F5F5),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+//                                    Container(
+////                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
+////                                      child: Container(
+////                                        child: Column(
+////                                          children: <Widget>[
+////                                            Container(
+////                                              height: 0.6,
+////                                              color: Colors.white70,
+////                                            ),
+////                                            Container(
+////                                              height: 40.0,
+////                                              color: Color(0xFFF5F5F5),
+////                                            ),
+////                                          ],
+////                                        ),
+////                                      ),
+////                                    ),
 
                                   ],
                                 ),
@@ -292,11 +376,19 @@ class _MyTrendState extends State<MyTrend>{
 
                           ],
                         ),
+
+                        //底线
+                      Container(
+                          margin: EdgeInsets.fromLTRB(0, 15.0, 0, 10.0),
+                          height: 0.4,
+                          color: Colors.grey,
+                      ),
+
                       ],
                     )
                   );
                 },
-                childCount: 1,
+                childCount: 3,
               ),
             ),
           ),

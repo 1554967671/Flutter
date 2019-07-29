@@ -37,7 +37,7 @@ class AddrBookBody extends StatefulWidget{
 class _AddrBookBodyState extends State<AddrBookBody>{
 
   //绘制菜单
-  Widget _setMenuItem(String title,String imgUrl,GestureTapCallback onTap){
+  Widget _setMenuItem(String title,IconData icon,Color bgColor,GestureTapCallback onTap){
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -53,14 +53,12 @@ class _AddrBookBodyState extends State<AddrBookBody>{
                 margin: EdgeInsets.fromLTRB(20.0, 10.0, 0, 10.0),
                 width: 40.0,
                 height: 40.0,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.white70,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(4.0),
-                  image: DecorationImage(
-                    image: NetworkImage(imgUrl),
-                    fit: BoxFit.cover,
-                  ),
                 ),
+                child: Icon(icon,size: 26.0,color: Colors.white,),
               ),
 
             ),
@@ -111,13 +109,13 @@ class _AddrBookBodyState extends State<AddrBookBody>{
                   //搜寻区域
                   SearchBox(),
                   //菜单区域
-                  _setMenuItem('新的朋友','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',()=>{}),
+                  _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],()=>{}),
                   _setLine(),
-                  _setMenuItem('讨论组','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',()=>{}),
+                  _setMenuItem('讨论组',Icons.group,Colors.green[400],()=>{}),
                   _setLine(),
-                  _setMenuItem('标签','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',()=>{}),
+                  _setMenuItem('标签',Icons.local_offer,Colors.blue[600],()=>{}),
                   _setLine(),
-                  _setMenuItem('企业号','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',()=>{}),
+                  _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],()=>{}),
 
                 ],
               ),

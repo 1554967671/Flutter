@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'trend.dart';
+import 'hotsport.dart';
 
 class ActionPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('发现',style: new TextStyle(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('发现',style: TextStyle(
             color: Colors.black
         )),
         centerTitle: true,
         backgroundColor: Colors.white12,
         elevation: 0,
       ),
-      body: new ActionBody(),
+      body: ActionBody(),
     );
   }
 
@@ -21,14 +22,14 @@ class ActionPage extends StatelessWidget{
 
 class ActionBody extends StatelessWidget{
 
-  Container _actionItem(String title, IconData icon,double top, double bottom, GestureTapCallback onTap) {
-    return new Container(
+  Container _actionItem(String title, IconData icon, Color iconColor,double top, double bottom, GestureTapCallback onTap) {
+    return Container(
       margin: EdgeInsets.fromLTRB(0, top, 0, bottom),
       color: Colors.white70,
-      child: new ListTile(
-        leading: Icon(icon),
+      child: ListTile(
+        leading: Icon(icon,color: iconColor,),
         title: Text(title),
-        trailing: Icon(Icons.keyboard_arrow_right),
+        trailing: Icon(Icons.keyboard_arrow_right,),
         onTap: onTap,
       ),
     );
@@ -54,18 +55,26 @@ class ActionBody extends StatelessWidget{
     }
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: new Column(
+    return Container(
+      child: Column(
         children: <Widget>[
-          _actionItem('好友圈', Icons.camera, 0, 0, ()=>{
+          _actionItem('好友圈', Icons.camera, Colors.blue[700], 0, 0, ()=>{
             Navigator.push(context, MaterialPageRoute(builder: (context) => MyTrend()))
           }),
-          _actionItem('扫一扫', Icons.crop_free, 10.0, 0, ()=>{}),
+          _actionItem('扫一扫', Icons.crop_free, Colors.blue[700], 10.0, 0, ()=>{
+
+          }),
           _setLine(),
-          _actionItem('热点资讯', Icons.whatshot, 0, 0, ()=>{}),
+          _actionItem('热点资讯', Icons.whatshot, Colors.red, 0, 0, ()=>{
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HotSport()))
+          }),
           _setLine(),
-          _actionItem('优客课堂', Icons.local_library, 0, 0, ()=>{}),
-          _actionItem('器件商城', Icons.store, 10.0, 0, ()=>{}),
+          _actionItem('优客课堂', Icons.local_library, Colors.green, 0, 0, ()=>{
+
+          }),
+          _actionItem('器件商城', Icons.store, Colors.yellow[900], 10.0, 0, ()=>{
+
+          }),
         ],
       ),
     );

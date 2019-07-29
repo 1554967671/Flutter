@@ -26,12 +26,12 @@ class MyPage extends StatelessWidget{
 
 class Main extends StatelessWidget{
 
-  Container _menuItem(String title,IconData icon,double top, double bottom,GestureTapCallback onTap){
+  Container _menuItem(String title,IconData icon,Color iconColor,double top, double bottom,GestureTapCallback onTap){
     return Container(
       margin: EdgeInsets.fromLTRB(0, top, 0, bottom),
       color: Colors.white70,
       child: ListTile(
-        leading: Icon(icon),
+        leading: Icon(icon,color: iconColor,),
         title: Text(title),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: onTap,
@@ -77,15 +77,15 @@ class Main extends StatelessWidget{
           ),
           Column(
             children: <Widget>[
-              _menuItem('支付',Icons.payment,10.0,10.0,()=>{
+              _menuItem('支付',Icons.payment, Colors.green,10.0,10.0,()=>{
                 Navigator.push(context, MaterialPageRoute(builder: (context) => _Pay()))
               }),
-              _menuItem('收藏',Icons.layers,0,0,()=>{}),
+              _menuItem('收藏',Icons.layers,Colors.blue[700],0,0,()=>{}),
               _setLine(),
-              _menuItem('数据',Icons.trending_up,0,0,()=>{}),
+              _menuItem('数据',Icons.trending_up,Colors.blue[700],0,0,()=>{}),
               _setLine(),
-              _menuItem('提醒',Icons.access_alarm,0,0,()=>{}),
-              _menuItem('设置',Icons.settings,10.0,0,()=>{}),
+              _menuItem('提醒',Icons.access_alarm,Colors.blue,0,0,()=>{}),
+              _menuItem('设置',Icons.settings,Colors.black38,10.0,0,()=>{}),
             ],
           )
 
