@@ -352,22 +352,22 @@ class _MyTrendState extends State<MyTrend>{
 
                                     //评论区域
 //                                    Container(
-////                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
-////                                      child: Container(
-////                                        child: Column(
-////                                          children: <Widget>[
-////                                            Container(
-////                                              height: 0.6,
-////                                              color: Colors.white70,
-////                                            ),
-////                                            Container(
-////                                              height: 40.0,
-////                                              color: Color(0xFFF5F5F5),
-////                                            ),
-////                                          ],
-////                                        ),
-////                                      ),
-////                                    ),
+//                                      padding: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
+//                                      child: Container(
+//                                        child: Column(
+//                                          children: <Widget>[
+//                                            Container(
+//                                              height: 0.6,
+//                                              color: Colors.white70,
+//                                            ),
+//                                            Container(
+//                                              height: 40.0,
+//                                              color: Color(0xFFF5F5F5),
+//                                            ),
+//                                          ],
+//                                        ),
+//                                      ),
+//                                    ),
 
                                   ],
                                 ),

@@ -50,7 +50,7 @@ class _hotSportBody extends StatelessWidget{
               width: 120.0,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
+                    image: NetworkImage(picList[0]),
                     fit: BoxFit.fill,
                   )
               ),
@@ -67,7 +67,7 @@ class _hotSportBody extends StatelessWidget{
                     Container(
                       margin: EdgeInsets.only(bottom: 4.0),
                       child: Text(
-                        '这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',
+                        title,
                         maxLines: 2,
                         style: TextStyle(
                           fontSize: 18.0,
@@ -76,7 +76,7 @@ class _hotSportBody extends StatelessWidget{
                       ),
                     ),
                     Text(
-                      '优客新闻',
+                      editor,
                       style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.grey,
@@ -101,7 +101,25 @@ class _hotSportBody extends StatelessWidget{
           //搜寻区域
           SearchBox(),
           //资讯列表区域
-          _infoListItem('测试标题',picList,'Alan'),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
+          _SetLine(),
+          _infoListItem('这是一条最新的测试新闻信息而已测试新闻信息而已测试新闻信息而已',picList,'优客新闻'),
         ],
       ),
     );
@@ -139,6 +157,17 @@ class SearchBox extends StatelessWidget{
 
 }
 
+class _SetLine extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
+      height: 0.3,
+      color: Colors.grey,
+    );
+  }
+}
 
 
 
