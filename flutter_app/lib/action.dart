@@ -58,21 +58,21 @@ class ActionBody extends StatelessWidget{
     return Container(
       child: Column(
         children: <Widget>[
-          _actionItem('好友圈', Icons.camera, Colors.blue[700], 0, 0, ()=>{
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MyTrend()))
+          _actionItem('好友圈', Icons.camera, Colors.blue[700], 0, 0, (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyTrend()));
           }),
-          _actionItem('扫一扫', Icons.crop_free, Colors.blue[700], 10.0, 0, ()=>{
+          _actionItem('扫一扫', Icons.crop_free, Colors.blue[700], 10.0, 0, (){
 
           }),
           _setLine(),
-          _actionItem('热点资讯', Icons.whatshot, Colors.red, 0, 0, ()=>{
-            Navigator.push(context, MaterialPageRoute(builder: (context) => HotSport()))
+          _actionItem('热点资讯', Icons.whatshot, Colors.red, 0, 0, (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HotSport()));
           }),
           _setLine(),
-          _actionItem('优客课堂', Icons.local_library, Colors.green, 0, 0, ()=>{
+          _actionItem('优客课堂', Icons.local_library, Colors.green, 0, 0, (){
 
           }),
-          _actionItem('器件商城', Icons.store, Colors.yellow[900], 10.0, 0, ()=>{
+          _actionItem('器件商城', Icons.store, Colors.yellow[900], 10.0, 0, (){
 
           }),
         ],

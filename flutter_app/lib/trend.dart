@@ -310,7 +310,7 @@ class _MyTrendState extends State<MyTrend>{
                                         child: Row(
                                           children: <Widget>[
                                             Expanded(
-                                              child: Wrap(
+                                              child: Wrap(//自动换行
                                                 spacing: 4.0,
                                                 crossAxisAlignment: WrapCrossAlignment.center,
                                                 children: <Widget>[

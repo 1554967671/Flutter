@@ -109,13 +109,13 @@ class _AddrBookBodyState extends State<AddrBookBody>{
                   //搜寻区域
                   SearchBox(),
                   //菜单区域
-                  _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],()=>{}),
+                  _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
                   _setLine(),
-                  _setMenuItem('讨论组',Icons.group,Colors.green[400],()=>{}),
+                  _setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
                   _setLine(),
-                  _setMenuItem('标签',Icons.local_offer,Colors.blue[600],()=>{}),
+                  _setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
                   _setLine(),
-                  _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],()=>{}),
+                  _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
 
                 ],
               ),
