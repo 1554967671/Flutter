@@ -9,7 +9,7 @@ class Pay extends StatelessWidget{
             color: Colors.black
         )),
         centerTitle: true,
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.white12,
         elevation: 0,
         leading: InkWell(
           onTap: (){Navigator.pop(context);},

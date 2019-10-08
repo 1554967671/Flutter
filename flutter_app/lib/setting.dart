@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'device.dart';
 
 class Setting extends StatelessWidget{
   @override
@@ -52,7 +53,9 @@ class _SettingBody extends StatelessWidget{
           _actionItem("通用",0,0,(){}),
           _actionItem("帮助与反馈",10.0,0,(){}),
           _SetLine(),
-          _actionItem("关于优客",0,0,(){}),
+          _actionItem("关于设备",0,0,(){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Device()));
+          }),
           _actionItem("切换账号",10.0,0,(){}),
           _actionItem("退出登陆",10.0,0,(){
             showDialog(

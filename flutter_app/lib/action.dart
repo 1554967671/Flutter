@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'trend.dart';
 import 'hotsport.dart';
+import 'web.dart';
 
 class ActionPage extends StatelessWidget{
   @override
@@ -70,7 +71,7 @@ class ActionBody extends StatelessWidget{
           }),
           _setLine(),
           _actionItem('优客课堂', Icons.local_library, Colors.green, 0, 0, (){
-
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewMain()));
           }),
           _actionItem('器件商城', Icons.store, Colors.yellow[900], 10.0, 0, (){
 

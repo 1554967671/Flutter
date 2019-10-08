@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pay.dart';
 import 'setting.dart';
+import 'chart.dart';
 
 class MyPage extends StatelessWidget{
   @override
@@ -79,16 +80,18 @@ class Main extends StatelessWidget{
           ),
           Column(
             children: <Widget>[
-              _menuItem('支付',Icons.payment, Colors.green,10.0,10.0,()=>{
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Pay()))
+              _menuItem('支付',Icons.payment, Colors.green,10.0,10.0,(){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Pay()));
               }),
-              _menuItem('收藏',Icons.layers,Colors.blue[700],0,0,()=>{}),
+              _menuItem('收藏',Icons.layers,Colors.blue[700],0,0,(){}),
               _setLine(),
-              _menuItem('数据',Icons.trending_up,Colors.blue[700],0,0,()=>{}),
+              _menuItem('数据',Icons.trending_up,Colors.blue[700],0,0,(){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ChartMain()));
+              }),
               _setLine(),
-              _menuItem('提醒',Icons.access_alarm,Colors.blue,0,0,()=>{}),
-              _menuItem('设置',Icons.settings,Colors.black38,10.0,0,()=>{
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Setting()))
+              _menuItem('提醒',Icons.access_alarm,Colors.blue,0,0,(){}),
+              _menuItem('设置',Icons.settings,Colors.black38,10.0,0,(){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Setting()));
               }),
             ],
           )
