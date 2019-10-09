@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'device.dart';
+import 'auth.dart';
 
 class Setting extends StatelessWidget{
   @override
@@ -56,7 +57,9 @@ class _SettingBody extends StatelessWidget{
           _actionItem("关于设备",0,0,(){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Device()));
           }),
-          _actionItem("切换账号",10.0,0,(){}),
+          _actionItem("切换账号",10.0,0,(){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AuthPage()));
+          }),
           _actionItem("退出登陆",10.0,0,(){
             showDialog(
               context: context,

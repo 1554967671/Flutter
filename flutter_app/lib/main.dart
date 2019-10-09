@@ -4,12 +4,12 @@ import 'addrbook.dart';
 import 'home.dart';
 import 'action.dart';
 import 'package:bottom_tab_bar/bottom_tab_bar.dart';
+
 class Homes extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     return _HomesState();
   }
-
 }
 
 class _HomesState extends State<Homes>{
@@ -49,8 +49,11 @@ class _HomesState extends State<Homes>{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return getHomePage();
+  }
 
+  Widget getHomePage(){
+    return new Scaffold(
       body: new Center(
         child: _children[_currentIndex],
       ),
@@ -70,7 +73,6 @@ class _HomesState extends State<Homes>{
   }
 
 }
-
 
 void main(){
   runApp(new MaterialApp(
