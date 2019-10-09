@@ -16,7 +16,7 @@ class AuthPage extends StatelessWidget{
       ),
       body: AuthPageHome(),
       bottomNavigationBar: Container(
-        height: 40.0,
+        height: 50.0,
         color: Colors.blue,
       ),
     );
@@ -40,14 +40,29 @@ class _AuthPageHomeState extends State<AuthPageHome>{
           //头像和账号
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 120.0,
+            height: 160.0,
             color: Colors.amber,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: 120.0,
+                    width: 80.0,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  Expanded(
+                    child: Text("888"),
+                  )
+                ],
+              ),
+            )
           ),
 
           //指纹图标和描述
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 120.0,
+            height: 160.0,
             color: Colors.green,
           )
 
