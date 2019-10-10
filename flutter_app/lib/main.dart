@@ -76,6 +76,7 @@ class _HomesState extends State<Homes>{
 
 void main(){
   runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: 'My App',
     home: new Homes(),
   ));
