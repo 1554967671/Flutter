@@ -130,7 +130,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
                             onTapDown: _handleTapDown,
                             onTapUp: _handleTapUp,
                             onTapCancel: _handleTapCancel,
-                            child: Icon(Icons.fingerprint,size: 70.0,color: _highlight ? Color(0xFF346E6E) : Colors.blue,),
+                            child: Icon(Icons.fingerprint,size: 70.0,color: _highlight ? Color(0xFF345E6E) : Colors.blue,),
                           )
                         ),
                     ),
@@ -165,7 +165,16 @@ class BottomSet extends StatefulWidget{
 
 class _BottomSetState extends State<BottomSet>{
 
-
+  Widget setBottomBtn(String text, double fontSize, Color color){
+    return Container(
+      child: Center(
+        child: Text(text,style: TextStyle(
+          fontSize: fontSize,
+          color: color,
+        ),),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,28 +191,20 @@ class _BottomSetState extends State<BottomSet>{
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Expanded(
-                    child: Container(
-                      child: Center(
-                        child: Text("切换登陆方式",style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.blue,
-                        ),),
-                      ),
-                    )
+                    child: InkWell(
+                      onTap: (){},
+                      child: setBottomBtn("切换登陆方式",16.0,Colors.blue),
+                    ),
                 ),
                 Container(
                   width: 0.2,
                   color: Colors.grey,
                 ),
                 Expanded(
-                    child: Container(
-                      child: Center(
-                        child: Text("切换账号",style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.blue,
-                        ),),
-                      ),
-                    )
+                    child: InkWell(
+                      onTap: (){},
+                      child: setBottomBtn("切换账号",16.0,Colors.blue),
+                    ),
                 ),
               ],
             ),
