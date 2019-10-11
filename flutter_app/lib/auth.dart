@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
 
 class AuthPage extends StatelessWidget{
   @override
@@ -12,7 +14,11 @@ class AuthPage extends StatelessWidget{
         backgroundColor: Colors.white12,
         elevation: 0,
         leading: InkWell(
-          onTap: (){Navigator.pop(context);},
+          onTap: (){
+            Navigator.of(context).pushAndRemoveUntil(
+                new MaterialPageRoute(builder: (context) => Homes()
+                ), (route) => route == null);
+          },
           child: Icon(Icons.close,color: Colors.black,size: 28.0,),
         ),
       ),
@@ -41,6 +47,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
   String _authorized = '验证失败';
 
   Future<void> _authenticate() async {
+    final prefs = await SharedPreferences.getInstance();
     bool authenticated = false;
     try {
       authenticated = await auth.authenticateWithBiometrics(
@@ -55,6 +62,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
     setState(() {
       _authorized = authenticated ? '验证成功' : '验证失败';
     });
+    prefs.setString("authorized", _authorized);
   }
   void _handleTapDown(TapDownDetails details) {
     //定义点击函数
