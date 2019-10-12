@@ -3,6 +3,7 @@ import 'my.dart';
 import 'addrbook.dart';
 import 'home.dart';
 import 'action.dart';
+import 'show.dart';
 import 'package:bottom_tab_bar/bottom_tab_bar.dart';
 
 class Homes extends StatefulWidget{
@@ -75,9 +76,9 @@ class _HomesState extends State<Homes>{
 }
 
 void main(){
-  runApp(new MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'My App',
-    home: new Homes(),
+    home: ShowPage(),
   ));
 }
