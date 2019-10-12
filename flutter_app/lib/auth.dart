@@ -88,6 +88,11 @@ class _AuthPageHomeState extends State<AuthPageHome>{
       _authorized = authenticated ? '验证成功' : '验证失败';
     });
     prefs.setString("authorized", _authorized);
+    if(_authorized == '验证成功'){
+      Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(builder: (context) => Homes()
+          ), (route) => route == null);
+    }
   }
   void _handleTapDown(TapDownDetails details) {
     //定义点击函数
