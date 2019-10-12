@@ -70,7 +70,7 @@ class Main extends StatelessWidget{
             height: 100.0,
             child: ListTile(
               leading: CircleAvatar(
-                backgroundImage: NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
+                backgroundImage: AssetImage("images/alan.jpg"),
                 radius: 28.0,
               ),
               title: Text('Alan'),

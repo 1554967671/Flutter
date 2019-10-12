@@ -1,7 +1,8 @@
 import 'dart:async';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'auth.dart';
 
 class ShowPage extends StatefulWidget{
   @override
@@ -14,7 +15,7 @@ class ShowPage extends StatefulWidget{
 class _ShowPageState extends State<ShowPage>{
   Timer timer;
   int _status = 0;
-  int _time = 4;
+  int _time = 5;
 
   @override
   void initState() {
@@ -23,7 +24,7 @@ class _ShowPageState extends State<ShowPage>{
   }
 
   void setTimer(){
-    timer = new Timer(const Duration(milliseconds: 1000), () {
+    timer = new Timer(const Duration(milliseconds: 1200), () {
       try {
         if(_time == 1){
           _goMain();
@@ -39,10 +40,18 @@ class _ShowPageState extends State<ShowPage>{
     });
   }
 
-  void _goMain(){
-    Navigator.of(context).pushAndRemoveUntil(
-        new MaterialPageRoute(builder: (context) => Homes()
-        ), (route) => route == null);
+  void _goMain() async {
+    final prefs = await SharedPreferences.getInstance();
+    String _auth = prefs.get("authorized");
+    if(_auth == "验证成功"){
+      Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(builder: (context) => Homes()
+          ), (route) => route == null);
+    } else {
+      Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(builder: (context) => AuthPage()
+          ), (route) => route == null);
+    }
   }
 
   @override

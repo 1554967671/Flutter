@@ -178,7 +178,7 @@ class _MyTrendState extends State<MyTrend>{
                                   width: 60.0,
                                   height: 60.0,
                                   child:  ClipOval(
-                                    child: Image.network('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',fit: BoxFit.fill,),
+                                    child: Image.asset('images/alan.jpg'),
                                   )
                               ),
                             ),

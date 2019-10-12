@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
@@ -46,13 +47,37 @@ class _AuthPageHomeState extends State<AuthPageHome>{
   final LocalAuthentication auth = LocalAuthentication();
   String _authorized = '验证失败';
 
+  @override
+  void initState(){
+    super.initState();
+    _authenticate();
+  }
+
   Future<void> _authenticate() async {
     final prefs = await SharedPreferences.getInstance();
     bool authenticated = false;
     try {
+      const andStrings = const AndroidAuthMessages(
+        cancelButton: '取消',
+        goToSettingsButton: '去设置',
+        fingerprintNotRecognized: '指纹识别失败',
+        goToSettingsDescription: '请设置指纹.',
+        fingerprintHint: '指纹',
+        fingerprintSuccess: '指纹识别成功',
+        signInTitle: '指纹验证',
+        fingerprintRequiredTitle: '请先录入指纹!',
+      );
+      const iosStrings = const IOSAuthMessages(
+        cancelButton: '取消',
+        goToSettingsButton: '去设置',
+        goToSettingsDescription: '请设置指纹.',
+      );
+
       authenticated = await auth.authenticateWithBiometrics(
-          localizedReason: 'Scan your fingerprint to authenticate',
+          localizedReason: '扫描指纹进行身份验证',
           useErrorDialogs: true,
+          androidAuthStrings: andStrings,
+          iOSAuthStrings: iosStrings,
           stickyAuth: true);
     } on PlatformException catch (e) {
       print(e);
@@ -105,7 +130,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
                     width: 80.0,
                     padding: const EdgeInsets.fromLTRB(10.0, 18.0, 10.0, 2.0),
                     child: new CircleAvatar(
-                      backgroundImage: new NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'),
+                      backgroundImage: AssetImage("images/alan.jpg"),
                       radius: 0,
                     )
                   ),
