@@ -72,7 +72,7 @@ class _ChartInfoState extends State<ChartInfo>{
             position: charts.BehaviorPosition.end,
             horizontalFirst: false,
             //单元的间隔
-            cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
+            cellPadding: new EdgeInsets.only(right: 40.0, bottom: 0.0),
             //是否显示测量值
             showMeasures: true,
             legendDefaultMeasure: charts.LegendDefaultMeasure.firstValue,
@@ -85,7 +85,7 @@ class _ChartInfoState extends State<ChartInfo>{
           ),
         ],
         //饼状图的显示环状的大小
-        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 40),
+        defaultRenderer: new charts.ArcRendererConfig(arcWidth: 14),
       );
 
       return chart;
@@ -151,17 +151,17 @@ class _ChartInfoState extends State<ChartInfo>{
         Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(bottom: 20.0),
+              padding: EdgeInsets.all(10.0),
               height: 160.0,
               child: getPieChart(),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 20.0),
+              padding: EdgeInsets.all(20.0),
               height: 300.0,
               child: getLineChart(),
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 20.0),
+              padding: EdgeInsets.all(20.0),
               height: 300.0,
               child: getBarChart(),
             ),
