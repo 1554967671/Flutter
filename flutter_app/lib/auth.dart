@@ -4,6 +4,7 @@ import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
+import 'login.dart';
 
 class AuthPage extends StatelessWidget{
   @override
@@ -230,7 +231,9 @@ class _BottomSetState extends State<BottomSet>{
               children: <Widget>[
                 Expanded(
                     child: InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      },
                       child: setBottomBtn("切换登陆方式",16.0,Colors.blue),
                     ),
                 ),

@@ -60,6 +60,8 @@ flutter:
   - images/sanjiao.png
   - images/icon-up.png
   - images/youke.jpg
+  - images/youke_head.png
+  - images/ykblogo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
