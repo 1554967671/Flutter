@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget{
         backgroundColor: Color(0xFFB9D3EE),
       ),
       body: LoginHome(),
+      bottomNavigationBar: BottomShow(),
     );
   }
 
@@ -190,7 +191,78 @@ class _LoginHomeState extends State<LoginHome>{
 
           //其他登陆方式
           Container(
-            height: 120.0,
+            height: 150.0,
+            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 40.0),
+            child: Container(
+              height: 150.0,
+              child: Column(
+                children: <Widget>[
+                  //描述
+                  Container(
+                    height: 30.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                height: 0.2,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Center(
+                            child: Text(
+                              "第三方账号登陆",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                height: 0.2,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  //显示第三方登陆按钮
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: (){},
+                            child: Image.asset(
+                              "images/wx_logo.png",
+                              width: 48.0,
+                              height: 48.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
           ),
 
 
@@ -225,7 +297,19 @@ class _LoginHomeState extends State<LoginHome>{
 
 }
 
+class BottomShow extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Color(0xFFE0EEEE),
+      height: 30.0,
+      child: Center(
+        child: Text("Copyright © 2019 All Rights Reserved"),
+      ),
+    );
+  }
 
+}
 
 
 

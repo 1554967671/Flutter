@@ -135,7 +135,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
                     height: 80.0,
                     width: 80.0,
                     padding: const EdgeInsets.fromLTRB(10.0, 18.0, 10.0, 2.0),
-                    child: new CircleAvatar(
+                    child: CircleAvatar(
                       backgroundImage: AssetImage("images/alan.jpg"),
                       radius: 0,
                     )
