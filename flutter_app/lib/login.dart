@@ -9,8 +9,8 @@ class LoginPage extends StatelessWidget{
           onTap: (){Navigator.pop(context);},
           child: Icon(Icons.arrow_back_ios,color: Colors.black,size: 28.0,),
         ),
-        backgroundColor: Colors.white12,
         elevation: 0,
+        backgroundColor: Color(0xFFB9D3EE),
       ),
       body: LoginHome(),
     );
@@ -28,9 +28,20 @@ class LoginHome extends StatefulWidget{
 
 class _LoginHomeState extends State<LoginHome>{
 
+  //显示密码明文的控制变量
+  bool _showPass=false;
+  //点击登陆按钮效果的控制变量
+  bool _isDown = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFB9D3EE), Color(0xFFE0EEEE)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+      )),
       child: Column(
         children: <Widget>[
           //Logo
@@ -57,61 +68,160 @@ class _LoginHomeState extends State<LoginHome>{
                     height: 48.0,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border(
-                          bottom: BorderSide(
-                            width: 0.2,
-                            color: Colors.black,
-                          )
-                        )
                     ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person),
-                        labelText: "请输入用户名",
-                        contentPadding: EdgeInsets.all(0),
-                        border: null,
-                        //prefixIcon: Icon(Icons.search),
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                    ),
-
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextField(
+                          autocorrect: true,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            hintText: "用户名",
+                            contentPadding: null,
+                            border: InputBorder.none,
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
+                      ],
+                    )
                   ),
 
                   //密码
                   Container(
-                    height: 48.0,
-                    decoration: BoxDecoration(
+                      height: 48.0,
+                      decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border(
-                            bottom: BorderSide(
-                              width: 0.2,
-                              color: Colors.black,
-                            )
-                        )
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person),
-                        labelText: "请输入密码",
-                        contentPadding: EdgeInsets.all(0),
-                        border: null,
-                        //prefixIcon: Icon(Icons.search),
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
-                    ),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                TextField(
+                                  autocorrect: true,
+                                  obscureText: !_showPass,
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.lock),
+                                    hintText: "密码",
+                                    contentPadding: null,
+                                    border: InputBorder.none,
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Center(
+                            child: Switch(
+                                materialTapTargetSize: MaterialTapTargetSize.padded,
+                                value: _showPass,
+                                onChanged: (value) => setShowPass(value)
+                            ),
+                          )
 
+                        ],
+                      )
+                  ),
+
+                  //保忘记密码
+                  Container(
+                    height: 30.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                            alignment: Alignment.centerLeft,
+                            child: GestureDetector(
+                              onTap: (){},
+                              child: Text(
+                                "免费注册",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            )
+                        ),
+                        Container(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: (){},
+                              child: Text(
+                                "忘记密码？",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            )
+                        ),
+                      ],
+                    ),
                   ),
 
                 ],
               ),
             )
           ),
+
+          //登陆按钮
+          Container(
+            height: 48.0,
+            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 8.0),
+            child: GestureDetector(
+              onTapDown: isDown,
+              onTapUp: isUp,
+              onTapCancel: isCancel,
+              child: Container(
+                color: _isDown ? Colors.blue[400] : Colors.blue,
+                child: Center(
+                  child: Text(
+                    "登 录",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0
+                    ),
+                  ),
+                )
+              ),
+            ),
+          ),
+
+          //其他登陆方式
+          Container(
+            height: 120.0,
+          ),
+
+
+
         ],
       ),
     );
   }
+
+  void setShowPass(bool value){
+    setState(() {
+      _showPass = value;
+    });
+  }
+
+  void isDown(TapDownDetails details){
+    setState(() {
+      _isDown = true;
+    });
+  }
+  void isUp(TapUpDetails details){
+    setState(() {
+      _isDown = false;
+    });
+  }
+  void isCancel(){
+    setState(() {
+      _isDown = false;
+    });
+  }
+
 
 }
 

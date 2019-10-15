@@ -11,7 +11,7 @@ class AuthPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("欢迎登陆",style: TextStyle(color: Colors.black)),
+        title: Text("指纹登陆",style: TextStyle(color: Colors.black)),
         centerTitle: true,
         backgroundColor: Colors.white12,
         elevation: 0,
