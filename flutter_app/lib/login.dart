@@ -14,6 +14,8 @@ class LoginPage extends StatelessWidget{
       ),
       body: LoginHome(),
       bottomNavigationBar: BottomShow(),
+      //键盘弹出时将不会resize
+      resizeToAvoidBottomInset: false,
     );
   }
 
