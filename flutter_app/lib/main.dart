@@ -29,7 +29,7 @@ class _HomesState extends State<Homes>{
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Text(
-          '2',
+          '18',
           style: TextStyle(fontSize: 12, color: Colors.white),
         ),
       ),

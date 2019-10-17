@@ -53,7 +53,7 @@ class Main extends StatelessWidget{
           ),
           Expanded(
             child: Container(
-              color: Colors.grey,
+              color: Colors.black,
             ),
           ),
         ],

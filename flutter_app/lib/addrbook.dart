@@ -125,6 +125,7 @@ class _AddBookBodyState extends State<AddBookBody>{
                 ),
 
                 //联系人
+                Container(),
 
               ],
             ),

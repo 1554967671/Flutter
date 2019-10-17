@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -21,36 +22,50 @@ class HomePage extends StatelessWidget{
               })
         ],
       ),
-      body: HomeBody(),
+      body: _HomeBody(),
     );
   }
 
 }
 
-class HomeBody extends StatelessWidget{
-
+class _HomeBody extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
+  State<StatefulWidget> createState() {
+    return _HomeBodyState();
+  }
+
+}
+
+class _HomeBodyState extends State<_HomeBody>{
+
+  EasyRefreshController _easyRefreshController = new EasyRefreshController();
+
+  Widget searchBox(){
     return Container(
-      child: ListView(
-        children: <Widget>[
-          MsgItem(),
-          MsgItem(),
-          MsgItem(),
-          MsgItem(),
-          MsgItem(),
-        ],
+      width: MediaQuery.of(context).size.width,
+      height: 56.0,
+      child: Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width/1.05,
+          height: 32.0,
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: '搜索',
+              contentPadding: EdgeInsets.all(0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+              prefixIcon: Icon(Icons.search),
+              fillColor: Colors.white,
+              filled: true,
+            ),
+          ),
+        ),
       ),
     );
   }
 
-}
-
-
-class MsgItem extends StatelessWidget{
-
-  @override
-  Widget build(BuildContext context) {
+  Widget msgItem(){
     return InkWell(
       onTap: (){},
       child: Container(
@@ -163,4 +178,67 @@ class MsgItem extends StatelessWidget{
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: EasyRefresh(
+        enableControlFinishRefresh: true,
+        enableControlFinishLoad: true,
+        controller: _easyRefreshController,
+        header: ClassicalHeader(
+          refreshText: "下拉刷新",
+          refreshReadyText: "松开刷新",
+          refreshingText: "刷新中...",
+          refreshedText: "刷新成功",
+          refreshFailedText: "刷新失败",
+          infoText: "最近更新于 %T",
+        ),
+        onRefresh: () async{
+          await Future.delayed(Duration(seconds: 2),(){
+            _easyRefreshController.finishRefresh(success: true);
+          });
+        },
+        child: ListView(
+          children: <Widget>[
+            searchBox(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+            msgItem(),
+          ],
+        ),
+      ),
+
+    );
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
