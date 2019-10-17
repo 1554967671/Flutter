@@ -65,12 +65,6 @@ class _AddBookBodyState extends State<AddBookBody>{
             ),
             Container(
               padding: EdgeInsets.fromLTRB(15.0, 0, 0, 0),
-              decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(
-                  width: 0.2,
-                  color: Colors.black,
-                )),
-              ),
               child: Text(
                 title,
                 style: TextStyle(
@@ -84,27 +78,58 @@ class _AddBookBodyState extends State<AddBookBody>{
       ),
     );
   }
+  //绘制分割线
+  Widget _setLine(){
+    return Container(
+      height: 0.2,
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 75.0,
+            color: Colors.white70,
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Stack(
           children: <Widget>[
-             //主列表区域
-             Container(
-              child: ListView(
-                children: <Widget>[
-                  //搜寻区域
-                  SearchBox(),
-                  //菜单区域
-                  _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
-                  _setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
-                  _setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
-                  _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
+            ListView(
+              children: <Widget>[
+                //主列表区域
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      //搜寻区域
+                      SearchBox(),
+                      //菜单区域
+                      _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
+                      _setLine(),
+                      _setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
+                      _setLine(),
+                      _setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
+                      _setLine(),
+                      _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
 
-                ],
-              ),
-             ),
+                    ],
+                  ),
+                ),
+
+                //联系人
+
+              ],
+            ),
+
+            //字母
 
           ],
         )
