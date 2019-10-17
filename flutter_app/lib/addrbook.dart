@@ -21,20 +21,21 @@ class AddressBook extends StatelessWidget{
           )
         ],
       ),
-      body: AddrBookBody(),
+      body: AddBookBody(),
+      resizeToAvoidBottomInset: false,
     );
   }
 
 }
 
-class AddrBookBody extends StatefulWidget{
+class AddBookBody extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return new _AddrBookBodyState();
+    return new _AddBookBodyState();
   }
 }
 
-class _AddrBookBodyState extends State<AddrBookBody>{
+class _AddBookBodyState extends State<AddBookBody>{
 
   //绘制菜单
   Widget _setMenuItem(String title,IconData icon,Color bgColor,GestureTapCallback onTap){
@@ -64,6 +65,12 @@ class _AddrBookBodyState extends State<AddrBookBody>{
             ),
             Container(
               padding: EdgeInsets.fromLTRB(15.0, 0, 0, 0),
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(
+                  width: 0.2,
+                  color: Colors.black,
+                )),
+              ),
               child: Text(
                 title,
                 style: TextStyle(
@@ -74,25 +81,6 @@ class _AddrBookBodyState extends State<AddrBookBody>{
 
           ],
         ),
-      ),
-    );
-  }
-  //绘制分割线
-  Widget _setLine(){
-    return Container(
-      height: 0.2,
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 75.0,
-            color: Colors.white70,
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -110,11 +98,8 @@ class _AddrBookBodyState extends State<AddrBookBody>{
                   SearchBox(),
                   //菜单区域
                   _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
-                  _setLine(),
                   _setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
-                  _setLine(),
                   _setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
-                  _setLine(),
                   _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
 
                 ],

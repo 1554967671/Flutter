@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('讯息',style: new TextStyle(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('讯息',style: TextStyle(
           color: Colors.black
         )),
         centerTitle: true,
         backgroundColor: Colors.white12,
         elevation: 0,
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.add,color: Colors.black),
+          IconButton(
+              icon: Icon(Icons.add,color: Colors.black),
               tooltip: '新增',
               iconSize: 28.0,
               onPressed: (){
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget{
               })
         ],
       ),
-      body: new HomeBody(),
+      body: HomeBody(),
     );
   }
 
@@ -31,10 +32,14 @@ class HomeBody extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: new Column(
+    return Container(
+      child: ListView(
         children: <Widget>[
-          new MsgItem(),
+          MsgItem(),
+          MsgItem(),
+          MsgItem(),
+          MsgItem(),
+          MsgItem(),
         ],
       ),
     );
@@ -42,137 +47,120 @@ class HomeBody extends StatelessWidget{
 
 }
 
-//class ShowSwiper extends StatefulWidget{
-//  @override
-//  State<StatefulWidget> createState() {
-//    return _ShowSwiperState();
-//  }
-//}
-
-//class _ShowSwiperState extends State<ShowSwiper>{
-//  //声名一个list存放image Widget
-//  List<Widget> imageList = List();
-//
-//  @override
-//  void initState(){
-//    imageList
-//      ..add(Image.network(
-//        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&fm=26&gp=0.jpg',
-//        fit: BoxFit.fill,
-//      ))
-//      ..add(Image.network(
-//        'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&fm=26&gp=0.jpg',
-//        fit: BoxFit.fill,
-//      ))
-//      ..add(Image.network(
-//        'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg',
-//        fit: BoxFit.fill,
-//      ))
-//      ..add(Image.network(
-//        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&fm=26&gp=0.jpg',
-//        fit: BoxFit.fill,
-//      ));
-//    super.initState();
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return new Container(
-//      width: MediaQuery.of(context).size.width,
-//      height: 200.0,
-//      child: Swiper(
-//        itemCount: 4,
-//        itemBuilder: _swiperBuilder,
-//        pagination: SwiperPagination(
-//          alignment: Alignment.bottomCenter,
-//          margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-//          builder: DotSwiperPaginationBuilder(
-//              color: Colors.black54,
-//              activeColor: Colors.redAccent,
-//              space: 6,
-//          )
-//        ),
-//        controller: SwiperController(),
-//        scrollDirection: Axis.horizontal,
-//        autoplay: true,
-//        control: SwiperControl(),
-//        onTap: (index) => debugPrint('点击了第$index个'),
-//      ),
-//    );
-//  }
-//
-//  Widget _swiperBuilder(BuildContext context,int index){
-//    return (imageList[index]);
-//  }
-//}
 
 class MsgItem extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return new Container(
-      color: Colors.white,
-      width: size.width,
-      height: 80.1,
-      child: new Column(
-        children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              new Container(
-                  width: 80.0,
-                  height: 80.0,
-                  child: new Container(
-                      padding: const EdgeInsets.all(10.0),
-                      width:60.0,
-                      child: new CircleAvatar(
-                        backgroundImage: AssetImage("images/alan.jpg"),
-                        radius: 0,
-                      )
-                  )
-              ),
-              new Expanded(
-                  child: new Column(
-                      children: <Widget>[
-                        new Container(
-                          height: 56.0,
-                          color: Colors.yellow,
-                          child: new Row(
-                            children: <Widget>[
-                              new Expanded(
-                                  child: new ListTile(
-                                    title: new Text(
+    return InkWell(
+      onTap: (){},
+      child: Container(
+        color: Colors.white70,
+        height: 86.2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            //头像区域
+            Container(
+                width: 80.0,
+                height: 80.0,
+                padding: EdgeInsets.all(10.0),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage("images/alan.jpg"),
+                  radius: 0,
+                )
+            ),
+            //数据信息
+            Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    //上部信息（标题和信息数）
+                    Container(
+                      height: 60.0,
+                      child: Row(
+                        children: <Widget>[
+                          //标题
+                          Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  Container(
+                                    height: 28.0,
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
                                       '测试',
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                      ),
                                       softWrap: false,
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                  )
-                              ),
-                              new Container(
-                                margin: EdgeInsets.fromLTRB(0, 0, 10.0, 0),
+                                  ),
+                                  Container(
+                                    height: 18.0,
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      '这是最后一笔信息',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.black54,
+                                      ),
+                                      softWrap: false,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+
+                              )
+                          ),
+
+                          //信息数量
+                          Container(
+                            width: 40.0,
+                            height: 60.0,
+                            child: Center(
+                              child: Container(
                                 width: 20.0,
                                 height: 20.0,
-                                color: Colors.red,
-                              )
-                            ],
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Text(
+                                  "2",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+
+                        ],
+                      ),
+                    ),
+                    //下部信息（日期）
+                    Container(
+                      height: 26.0,
+                      padding: EdgeInsets.only(right: 10.0),
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "09:20",
+                          style: TextStyle(
+                            color: Colors.black54,
                           ),
                         ),
-                        new Container(
-                          height: 24.0,
-                          color: Colors.green,
-                        )
-                      ],
-                  )
-              )
-            ],
-          ),
-          new Container(
-            height: 0.1,
-            color: Colors.black,
-          )
-        ],
-      )
+                      ),
+                    )
+                  ],
+                )
+            )
+          ],
+        ),
+      ),
     );
   }
 
