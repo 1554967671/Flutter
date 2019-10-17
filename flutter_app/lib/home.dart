@@ -69,7 +69,7 @@ class _HomeBodyState extends State<_HomeBody>{
     return InkWell(
       onTap: (){},
       child: Container(
-        color: Colors.white70,
+        color: Color(0xBBFFFFFF),
         height: 86.2,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -159,8 +159,16 @@ class _HomeBodyState extends State<_HomeBody>{
                     Container(
                       height: 26.0,
                       padding: EdgeInsets.only(right: 10.0),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            width: 0.2,
+                            color: Colors.black38,
+                          )
+                        )
+                      ),
                       child: Container(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.topRight,
                         child: Text(
                           "09:20",
                           style: TextStyle(
