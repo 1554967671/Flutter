@@ -9,7 +9,7 @@ class ActionPage extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('发现',style: TextStyle(
-            color: Colors.black
+            color: Colors.black38
         )),
         centerTitle: true,
         backgroundColor: Colors.white12,

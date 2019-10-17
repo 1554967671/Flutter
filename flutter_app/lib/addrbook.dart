@@ -90,7 +90,7 @@ class _AddBookBodyState extends State<AddBookBody>{
           ),
           Expanded(
             child: Container(
-              color: Colors.black,
+              color: Colors.black38,
             ),
           ),
         ],
