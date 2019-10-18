@@ -134,6 +134,7 @@ class _MyTrendState extends State<MyTrend>{
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            brightness: Brightness.light,
             title: Text('好友圈',style: TextStyle(
                 color: Colors.black
             )),

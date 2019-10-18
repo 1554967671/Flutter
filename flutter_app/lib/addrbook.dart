@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:azlistview/azlistview.dart';
 
 class AddressBook extends StatelessWidget{
 
@@ -6,6 +7,7 @@ class AddressBook extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text('通讯录',style: new TextStyle(
             color: Colors.black
         )),

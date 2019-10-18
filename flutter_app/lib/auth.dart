@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/auth_strings.dart';
@@ -11,6 +13,7 @@ class AuthPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text("指纹登陆",style: TextStyle(color: Colors.black)),
         centerTitle: true,
         backgroundColor: Colors.white12,
@@ -51,7 +54,9 @@ class _AuthPageHomeState extends State<AuthPageHome>{
   @override
   void initState(){
     super.initState();
-    _authenticate();
+    new Timer(const Duration(milliseconds: 1200), () {
+      _authenticate();
+    });
   }
 
   Future<void> _authenticate() async {

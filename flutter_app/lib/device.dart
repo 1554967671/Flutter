@@ -91,6 +91,7 @@ class _DeviceState extends State<Device>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         backgroundColor: Colors.white12,
         leading: InkWell(
           onTap: (){Navigator.pop(context);},

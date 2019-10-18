@@ -5,6 +5,7 @@ class LoginPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         leading: InkWell(
           onTap: (){Navigator.pop(context);},
           child: Icon(Icons.arrow_back_ios,color: Colors.black,size: 28.0,),
@@ -68,7 +69,7 @@ class _LoginHomeState extends State<LoginHome>{
                 children: <Widget>[
                   //用户名
                   Container(
-                    height: 48.0,
+                    height: 50.0,
                     decoration: BoxDecoration(
                         color: Colors.white,
                     ),
@@ -92,7 +93,7 @@ class _LoginHomeState extends State<LoginHome>{
 
                   //密码
                   Container(
-                      height: 48.0,
+                      height: 50.0,
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),

@@ -5,6 +5,7 @@ class Pay extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text('支付',style: TextStyle(
             color: Colors.black
         )),

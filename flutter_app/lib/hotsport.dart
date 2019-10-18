@@ -5,6 +5,7 @@ class HotSport extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         leading: InkWell(
           onTap: ()=>{Navigator.pop(context)},
           child: Icon(Icons.arrow_back,color: Colors.black,size: 28.0,),

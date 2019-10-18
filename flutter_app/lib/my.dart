@@ -8,6 +8,7 @@ class MyPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text(''),
         centerTitle: true,
         backgroundColor: Colors.white70,

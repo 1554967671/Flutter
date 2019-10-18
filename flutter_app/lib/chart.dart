@@ -6,6 +6,7 @@ class ChartMain extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.dark,
         title: Text('数据',style: TextStyle(
             color: Colors.black
         )),

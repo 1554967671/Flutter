@@ -8,6 +8,7 @@ class ActionPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text('发现',style: TextStyle(
             color: Colors.black
         )),
