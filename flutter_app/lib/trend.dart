@@ -43,7 +43,7 @@ class _MyTrendState extends State<MyTrend>{
     },
   ];
 
-  Widget _SetHead(){
+  Widget setHead(){
     return Container(
       child: Stack(
         fit: StackFit.expand,
@@ -139,7 +139,7 @@ class _MyTrendState extends State<MyTrend>{
                 color: Colors.black
             )),
             leading: InkWell(
-              onTap: ()=>{Navigator.pop(context)},
+              onTap: (){Navigator.pop(context);},
               child: Icon(Icons.arrow_back,color: Colors.black,size: 28.0,),
             ),
             actions: <Widget>[
@@ -152,7 +152,7 @@ class _MyTrendState extends State<MyTrend>{
             backgroundColor: Color(0xFFFCFCFC),
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: _SetHead(),
+              background: setHead(),
             ),
             pinned: true,
           ),

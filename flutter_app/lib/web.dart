@@ -21,7 +21,7 @@ class _WebBodyState extends State<WebViewMain>{
       ),
       child: SafeArea(
           child: WebView(
-            initialUrl: "https://flutterchina.club/",
+            initialUrl: "https://www.baidu.com/",
             //js执行模式
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller){

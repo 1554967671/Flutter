@@ -81,7 +81,7 @@ class _ChartInfoState extends State<ChartInfo>{
             outsideJustification: charts.OutsideJustification.endDrawArea,
             //定义数据描述
             measureFormatter: (num value) {
-              return value == null ? '-' : '${value}';
+              return value == null ? '-' : value;
             },
           ),
         ],

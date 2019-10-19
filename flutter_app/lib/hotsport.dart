@@ -7,7 +7,7 @@ class HotSport extends StatelessWidget{
       appBar: AppBar(
         brightness: Brightness.light,
         leading: InkWell(
-          onTap: ()=>{Navigator.pop(context)},
+          onTap: (){Navigator.pop(context);},
           child: Icon(Icons.arrow_back,color: Colors.black,size: 28.0,),
         ),
         title: Text('热点资讯',style: TextStyle(
@@ -17,13 +17,21 @@ class HotSport extends StatelessWidget{
         backgroundColor: Colors.white12,
         elevation: 0,
       ),
-      body: _hotSportBody(),
+      body: HotSportBody(),
     );
   }
 
 }
 
-class _hotSportBody extends StatelessWidget{
+class HotSportBody extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return null;
+  }
+
+}
+
+class HotSportBodyState extends State<HotSportBody>{
 
   List<String> picList = ['https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&fm=26&gp=0.jpg'];
 

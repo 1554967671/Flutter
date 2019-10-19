@@ -87,8 +87,8 @@ class _SetLine extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(15.0, 0, 0, 0),
-      height: 0.1,
-      color: Colors.black,
+      height: 0.2,
+      color: Colors.black38,
     );
   }
 }
