@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'my.dart';
 import 'addrbook.dart';
 import 'home.dart';
@@ -165,6 +166,7 @@ void main(){
     title: 'My App',
     home: ShowPage(),
   ));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
 }
 
 

@@ -54,7 +54,7 @@ class _AuthPageHomeState extends State<AuthPageHome>{
   @override
   void initState(){
     super.initState();
-    new Timer(const Duration(milliseconds: 1200), () {
+    new Timer(const Duration(milliseconds: 500), () {
       _authenticate();
     });
   }

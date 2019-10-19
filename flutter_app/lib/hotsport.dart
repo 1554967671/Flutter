@@ -26,7 +26,7 @@ class HotSport extends StatelessWidget{
 class HotSportBody extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return null;
+    return HotSportBodyState();
   }
 
 }

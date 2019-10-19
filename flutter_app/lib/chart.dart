@@ -6,7 +6,6 @@ class ChartMain extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
         title: Text('数据',style: TextStyle(
             color: Colors.black
         )),
@@ -81,7 +80,7 @@ class _ChartInfoState extends State<ChartInfo>{
             outsideJustification: charts.OutsideJustification.endDrawArea,
             //定义数据描述
             measureFormatter: (num value) {
-              return value == null ? '-' : value;
+              return value == null ? '-' : "$value";
             },
           ),
         ],
