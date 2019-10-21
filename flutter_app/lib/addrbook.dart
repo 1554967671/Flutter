@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:azlistview/azlistview.dart';
 import 'package:flutter/material.dart';
-// import 'package:azlistview/azlistview.dart';
+import 'package:flutter/services.dart';
+import 'package:lpinyin/lpinyin.dart';
 
 class AddressBook extends StatelessWidget{
 
@@ -39,8 +43,13 @@ class AddBookBody extends StatefulWidget{
 
 class _AddBookBodyState extends State<AddBookBody>{
 
+  List<AddrInfo> _addrInfoList = List();
+  int _susHeight = 40;
+  int _itemHeight = 60;
+  String _susTag = "";
+
   //绘制菜单
-  Widget _setMenuItem(String title,IconData icon,Color bgColor,GestureTapCallback onTap){
+  Widget setMenuItem(String title,IconData icon,Color bgColor,GestureTapCallback onTap){
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -81,7 +90,7 @@ class _AddBookBodyState extends State<AddBookBody>{
     );
   }
   //绘制分割线
-  Widget _setLine(){
+  Widget setLine(){
     return Container(
       height: 0.2,
       child: Row(
@@ -100,42 +109,128 @@ class _AddBookBodyState extends State<AddBookBody>{
     );
   }
 
+  //初始化数据
+  @override
+  void initState() {
+    super.initState();
+    loadDate();
+  }
+
+  //
+  void loadDate() async {
+    //加载通讯录列表
+    rootBundle.loadString('assets/data/friends.json').then((value){
+      Map itemMap = json.decode(value);
+      List list = itemMap['friends'];
+      list.forEach((value){
+        _addrInfoList.add(AddrInfo(name: value['name']));
+      });
+      _handleList(_addrInfoList);
+      setState(() {
+        _susTag = _addrInfoList[0].getSuspensionTag();
+      });
+    });
+  }
+
+  //对数据进行处理
+  void _handleList(List<AddrInfo> list){
+    if(null == list || list.isEmpty) return;
+    for(int i = 0, length = list.length; i < length; i++){
+      //通过拼音插件将文字转换为拼音，若不能转换用#代替
+      String pinyin = PinyinHelper.getPinyinE(list[i].name, separator: "", defPinyin: '#', format: PinyinFormat.WITHOUT_TONE);
+      //获取第一个字的首字母
+      String tag = pinyin.substring(0, 1).toUpperCase();
+      //设置拼音
+      list[i].namePinyin = pinyin;
+      if (RegExp("[A-Z]").hasMatch(tag)) {//设置标签
+        list[i].tagIndex = tag;
+      } else {
+        list[i].tagIndex = "#";
+      }
+    }
+    SuspensionUtil.sortListBySuspensionTag(list);
+  }
+
+  //改变标签函数
+  void _onSusTagChange(String tag){
+    setState(() {
+     _susTag =  tag;
+    });
+  }
+
+  //构建悬停Widget
+  Widget _buildSusWidget(String susTag){
+    return Container(
+      height: _susHeight.toDouble(),
+      padding: const EdgeInsets.only(left: 15.0),
+      color: Colors.grey[200],
+      alignment: Alignment.centerLeft,
+      child: Text(
+        '$susTag',
+        softWrap: false,
+        style: TextStyle(
+          fontSize: 14.0,
+          color: Color(0xff999999),
+        ),
+      ),
+    );
+  }
+
+  ///构建列表 item Widget.
+  Widget _buildListItem(AddrInfo model) {
+    return Column(
+      children: <Widget>[
+        Offstage(
+          offstage: !(model.isShowSuspension == true),
+          child: _buildSusWidget(model.getSuspensionTag()),
+        ),
+        SizedBox(
+          height: _itemHeight.toDouble(),
+          child: setMenuItem(model.name,Icons.person,Colors.blue[300],(){}),
+        ),
+      ],
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Stack(
-          children: <Widget>[
-            ListView(
-              children: <Widget>[
-                //主列表区域
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      //搜寻区域
-                      SearchBox(),
-                      //菜单区域
-                      _setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
-                      _setLine(),
-                      _setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
-                      _setLine(),
-                      _setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
-                      _setLine(),
-                      _setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
-
-                    ],
-                  ),
-                ),
-
-                //联系人
-                Container(),
-
-              ],
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: AzListView(
+            header: AzListViewHeader(
+                tag: "★",
+                height: 300,
+                builder: (context){
+                  return Container(
+                    child: Column(
+                      children: <Widget>[
+                        //搜寻区域
+                        SearchBox(),
+                        //菜单区域
+                        setMenuItem('新的朋友',Icons.person_add,Colors.yellow[800],(){}),
+                        setLine(),
+                        setMenuItem('讨论组',Icons.group,Colors.green[400],(){}),
+                        setLine(),
+                        setMenuItem('标签',Icons.local_offer,Colors.blue[600],(){}),
+                        setLine(),
+                        setMenuItem('企业号',Icons.confirmation_number,Colors.blue[600],(){}),
+                      ],
+                    ),
+                  );
+                }
             ),
-
-            //字母
-
-          ],
+            data: _addrInfoList,
+            itemBuilder: (context, model) => _buildListItem(model),
+            suspensionWidget: _buildSusWidget(_susTag),
+            isUseRealIndex: true,
+            itemHeight: _itemHeight,
+            suspensionHeight: _susHeight,
+            onSusTagChanged: _onSusTagChange,
+          ),
         )
+      ],
     );
   }
 }
@@ -170,21 +265,36 @@ class SearchBox extends StatelessWidget{
 
 }
 
+//联系人的对象
+class AddrInfo extends ISuspensionBean {
 
-//字母
-class UserIndex extends StatelessWidget{
+  String name;
+  String tagIndex;
+  String namePinyin;
+
+  AddrInfo({
+    this.name,
+    this.tagIndex,
+    this.namePinyin,
+  });
+
+  AddrInfo.fromJson(Map<String, dynamic> json) 
+    : name = json['name'] == null ? "" : json['name'];
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'tagIndex': tagIndex,
+    'namePinyin': namePinyin,
+    'isShowSuspension': isShowSuspension
+  };
+
   @override
-  Widget build(BuildContext context){
-    return null;
-  }
+  String getSuspensionTag() => tagIndex;
+
+  @override
+  String toString() => "AddrInfoBean {" + " \"name\":\"" + name + "\"" + '}';
+
 }
 
-//联系人列表
-class UserItem extends StatelessWidget{
 
-  @override
-  Widget build(BuildContext context){
-    return null;
-  }
-}
 

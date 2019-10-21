@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         title: Text('讯息',style: TextStyle(
           color: Colors.black
         )),
