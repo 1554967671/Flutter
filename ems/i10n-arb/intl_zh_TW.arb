@@ -1,0 +1,16 @@
+{
+  "@@last_modified": "2019-11-05T14:20:22.281447",
+  "@@locale":"zh_TW",
+  "Home": "首頁",
+  "@Home": {
+    "description": "Home for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "My": "我的",
+  "@My": {
+    "description": "My for the application",
+    "type": "text",
+    "placeholders": {}
+  }
+}

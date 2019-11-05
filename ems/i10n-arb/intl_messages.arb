@@ -1,0 +1,15 @@
+{
+  "@@last_modified": "2019-11-05T14:20:22.281447",
+  "Home": "Home",
+  "@Home": {
+    "description": "Home for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "My": "My",
+  "@My": {
+    "description": "My for the application",
+    "type": "text",
+    "placeholders": {}
+  }
+}
